@@ -7,7 +7,6 @@ function getAllDirectors(movies) {
 
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(movies, director) {
-  /* ? de donde viene el segundo parametro? desde donde se llama la function  */
   // director = 'Quentin Tarantino';
   const filteredMovies = movies.filter((movie) => movie.director === director);
 
@@ -26,31 +25,69 @@ function moviesAvarage(movies) {
   return TotalScore;
 }
 
-
 function moviesAverageOfDirector(movies, director) {
+  let moviesDirectos = getMoviesFromDirector(movies, director);
+  let result = moviesAvarage(moviesDirectos);
 
-  let moviesDirectos = getMoviesFromDirector(movies, director)
-  let result = moviesAvarage(moviesDirectos)
-
- return result
+  return result;
 }
 
 // Exercise 4:  Alphabetic order by title
 
 function aToZ(movies) {
-  const copy = [...movies]
-  copy.sort((a,b) => a.title.localeCompare(b.title))
-  return copy.slice(0,20).map(movie => movie.title)
+  const copy = [...movies];
+  copy.sort((a, b) => a.title.localeCompare(b.title));
+  return copy.slice(0, 20).map((movie) => movie.title);
 }
 function orderAlphabetically(movies) {
-
-const moviesInOrder = aToZ(movies)
-return moviesInOrder
-
+  const moviesInOrder = aToZ(movies);
+  return moviesInOrder;
 }
 
+/*  function olderToNewer(movies) {
+  const ascending = movies.sort((a, b) => {
+    if (a.year < b.year) {
+      return -1;
+    } else if (a.year > b.year) {
+      return 1;
+    } else {
+      if (a.title < b.title) {
+        return -1;
+      } else if (a.title > b.title) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
+   
+  });
+  return ascending;
+}  */
+
+//olderToNewer(movies)
+
 // Exercise 5: Order by year, ascending
-function orderByYear() {}
+function orderByYear(movies) {
+  const sortedMoviesArray = [...movies];
+
+  const sortedMovies = sortedMoviesArray.sort((a, b) => {
+    if (a.year < b.year) {
+      return -1;
+    } else if (a.year > b.year) {
+      return 1;
+    } else {
+      if (a.title < b.title) {
+        return -1;
+      } else if (a.title > b.title) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
+  });
+
+  return sortedMoviesArray;
+}
 
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory() {}
